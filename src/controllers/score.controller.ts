@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { ScoreService } from '../services/score.service';
-import { GameDifficulty } from '../models/Score';
+import { GameDifficulty } from '../models/score';
 
 export interface LeaderboardEntry {
   player: string;

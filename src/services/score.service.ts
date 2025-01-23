@@ -1,6 +1,6 @@
 import { AppDataSource } from '../config/database';
-import { Score, GameDifficulty } from '../models/Score';
-import { User } from '../models/User';
+import { Score, GameDifficulty } from '../models/score';
+import { User } from '../models/user';
 
 export class ScoreService {
   private scoreRepository = AppDataSource.getRepository(Score);

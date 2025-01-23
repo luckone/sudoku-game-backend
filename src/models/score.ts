@@ -5,7 +5,7 @@ import {
   ManyToOne,
   CreateDateColumn,
 } from 'typeorm';
-import { User } from './User';
+import { User } from './user';
 
 export enum GameDifficulty {
   BEGINNER = 'BEGINNER',
