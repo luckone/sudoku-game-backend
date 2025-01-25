@@ -1,10 +1,11 @@
 import 'reflect-metadata';
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
 import { AppDataSource } from './config/database';
 import routes from './routes';
 import { errorMiddleware } from './middleware/error.middleware';
+import { logger } from "./utils/logger";
 
 config();
 
@@ -21,15 +22,14 @@ const PORT = process.env.PORT || 3000;
 
 AppDataSource.initialize()
   .then(() => {
-    console.log('Database connection initialized');
+    logger.info('Database connection initialized');
     app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+      logger.info(`Server is running on port ${PORT}`);
     });
   })
-  .catch((error: Error) => console.log('Database connection error:', error));
+  .catch((error: Error) => logger.error('Database connection error:', error));
 
 process.on('unhandledRejection', (err) => {
-  console.log('UNHANDLED REJECTION!');
-  console.log(err);
+  logger.error('UNHANDLED REJECTION:', err);
   process.exit(1);
 });
